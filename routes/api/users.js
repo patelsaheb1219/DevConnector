@@ -14,7 +14,7 @@ router.get('/test' , (req ,res) => res.json({ msg: 'Users Works' }));
 
 //@route GET api/users/registration 
 // @desc Register user  
-//@route public route 
+//@route public routerr
 router.post('/register' , (req ,res) => {
   User.findOne({ email: req.body.email }) 
   .then(user => {
