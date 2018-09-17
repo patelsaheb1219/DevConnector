@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Register extends Component {
   constructor() {
@@ -10,15 +11,14 @@ class Register extends Component {
       password: "",
       password2: "",
       errors: {}
-
     };
-  
+
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this); 
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
-    this.setState({[ e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   onSubmit(e) {
@@ -27,11 +27,14 @@ class Register extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
-      password : this.state.password,
-      password2 : this.state.password2
-    }
+      password: this.state.password,
+      password2: this.state.password2
+    };
 
-    console.log(newUser);
+    axios
+      .post("/api/users/register", newUser)
+      .then(res => console.log(res.data))
+      .catch(err => this.setState({ errors: err.response.data }));
   }
 
   render() {
@@ -52,7 +55,7 @@ class Register extends Component {
                     className="form-control form-control-lg"
                     placeholder="Name"
                     name="name"
-                    value = {this.state.name}
+                    value={this.state.name}
                     onChange={this.onChange}
                   />
                 </div>
@@ -62,9 +65,9 @@ class Register extends Component {
                     className="form-control form-control-lg"
                     placeholder="Email Address"
                     name="email"
-                    value = {this.state.email}
+                    value={this.state.email}
                     onChange={this.onChange}
-                  /> 
+                  />
                   <small className="form-text text-muted">
                     This site uses Gravatar so if you want a profile image, use
                     a Gravatar email
@@ -76,7 +79,7 @@ class Register extends Component {
                     className="form-control form-control-lg"
                     placeholder="Password"
                     name="password"
-                    value = {this.state.password}
+                    value={this.state.password}
                     onChange={this.onChange}
                   />
                 </div>
@@ -86,8 +89,8 @@ class Register extends Component {
                     className="form-control form-control-lg"
                     placeholder="Confirm Password"
                     name="password2"
-                    value = {this.state.password2}
-                    onChange={this.onChange} 
+                    value={this.state.password2}
+                    onChange={this.onChange}
                   />
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
