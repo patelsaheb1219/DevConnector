@@ -1,10 +1,17 @@
+import { TEST_DISPATCH } from '../actions/types';
+
 const intialState = {
   isAuthenticated: false,
-  users: {}
+  user: {}
 };
 
 export default function combineReducer(state = intialState, action) {
   switch (action.type) {
+    case TEST_DISPATCH:
+      return {
+        ...state,
+        user: action.payload
+      }
     default:
       return state;
   }
