@@ -9,7 +9,6 @@ import { addEducation } from "../../actions/profileActions";
 class AddEducation extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       school: "",
       degree: "",
@@ -28,7 +27,7 @@ class AddEducation extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.errors) {
+    if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
@@ -69,11 +68,11 @@ class AddEducation extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to="/dashboard" className="btn btn-light">
-                Go back
+                Go Back
               </Link>
               <h1 className="display-4 text-center">Add Education</h1>
-              <p className="lead text center">
-                Add any school, bootcamp, etc that you have attended 
+              <p className="lead text-center">
+                Add any school, bootcamp, etc that you have attended
               </p>
               <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
@@ -84,15 +83,13 @@ class AddEducation extends Component {
                   onChange={this.onChange}
                   error={errors.school}
                 />
-
                 <TextFieldGroup
-                  placeholder="* Degree"
+                  placeholder="* Degree or Certification"
                   name="degree"
                   value={this.state.degree}
                   onChange={this.onChange}
                   error={errors.degree}
                 />
-
                 <TextFieldGroup
                   placeholder="* Field of Study"
                   name="fieldofstudy"
@@ -100,8 +97,7 @@ class AddEducation extends Component {
                   onChange={this.onChange}
                   error={errors.fieldofstudy}
                 />
-
-                <h6>From date</h6>
+                <h6>From Date</h6>
                 <TextFieldGroup
                   name="from"
                   type="date"
@@ -109,8 +105,7 @@ class AddEducation extends Component {
                   onChange={this.onChange}
                   error={errors.from}
                 />
-
-                <h6>To date</h6>
+                <h6>To Date</h6>
                 <TextFieldGroup
                   name="to"
                   type="date"
@@ -129,19 +124,18 @@ class AddEducation extends Component {
                     onChange={this.onCheck}
                     id="current"
                   />
-                  <label htmlFor="current" className="form check label">
+                  <label htmlFor="current" className="form-check-label">
                     Current Job
                   </label>
                 </div>
                 <TextAreaFieldGroup
                   placeholder="Program Description"
-                  name="discription"
+                  name="description"
                   value={this.state.description}
                   onChange={this.onChange}
                   error={errors.description}
-                  info="Tell us about the program that you're in"
+                  info="Tell us about the program that you were in"
                 />
-
                 <input
                   type="submit"
                   value="Submit"
