@@ -184,7 +184,7 @@ router.post(
         from: req.body.from,
         to: req.body.to,
         current: req.body.current,
-        discription: req.body.discription
+        description: req.body.description
       };
 
       //Add to experince array
@@ -218,7 +218,7 @@ router.post(
         from: req.body.from,
         to: req.body.to,
         current: req.body.current,
-        discription: req.body.discription
+        description: req.body.description
       };
 
       //Add to experince array
